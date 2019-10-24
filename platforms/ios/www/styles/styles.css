@@ -1,0 +1,409 @@
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #000;
+	font-family: Georgia, "Times New Roman", Times, serif;
+
+}
+@font-face {
+  font-family: 'Roskell';
+  src: url("../fonts/Roskell.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
+p {
+	font-family: Georgia, "Times New Roman", Times, serif;
+color: #fff;
+line-height: 16px;
+}
+#container {
+	float: left;
+}
+#home {
+	display: none;
+	margin: 0;
+	float: left;
+	width: 320px;
+	height: 480px;
+}
+#guage {
+	position: relative;
+	width: 320px;
+	height: 480px;
+	overflow: hidden;
+	float: left;
+	background-color: #cccccc;
+
+}
+#highlight {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 320px;
+	height: 480px;	
+}
+#needleIMG {
+	margin: 95px 0 0 0;
+	position: absolute;
+	top: 20px;
+	left: 144px;
+}
+#needleIMG img {
+	width: 31px;
+	height: 375px;
+}
+#name {
+	position: absolute;
+}
+
+#mask {
+	position: absolute;
+	top: 0;
+}
+#mask-highlight {
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	left: 0;	
+}
+#light1 {
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+#light2 {
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+#light3 {
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+#light4 {
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#mask-highlight.on0 {
+	opacity: 0;
+  -webkit-transition: opacity 500ms linear;	
+}
+#mask-highlight.on1 {
+	opacity: 0.3;
+  -webkit-transition: opacity 500ms linear;	
+}
+#mask-highlight.on2 {
+	opacity: 0.6;
+  -webkit-transition: opacity 500ms linear;	
+}
+#mask-highlight.on3 {
+	opacity: 0.8;
+  -webkit-transition: opacity 500ms linear;	
+}
+#mask-highlight.on4 {
+	opacity: 1;
+  -webkit-transition: opacity 500ms linear;	
+}
+#light1.on, #light2.on, #light3.on, #light4.on {
+	opacity: 1;
+  -webkit-transition: opacity 500ms linear;
+}
+#light1.off, #light2.off, #light3.off, #light4.off {
+	opacity: 0;
+  -webkit-transition: opacity 500ms linear;
+}
+
+
+#debugpannel {
+	background-color: rgba(255,255,255,0.25);
+	position: absolute;
+	font-size: 11px;
+	line-height: 12px;
+  color: #fff;
+  margin: 0;
+  padding: 0 0 0 10px;
+}
+#debugpannel a {
+	color: #fff;
+	font-size: 11px;
+}
+
+
+
+#buttons {
+	position: absolute;
+	width: 250px;
+	top: 293px;
+	left: 115px;
+}
+
+#homebutton {
+	float: left;
+	margin: -10px 0 0 0;
+}
+#homebutton img {
+	width: 40px;
+	margin: 0 0 16px 25px;
+}
+
+#homeb1, #homeb2 {
+	position: absolute;
+}
+
+#hundreds, #tens, #ones {
+	margin: 49px 0 0 7px;
+	padding: 0 1px 0 0;
+	float: left;
+	width: 20px;
+	height: 20px;
+	background-size: 20px 20px;	
+}
+#hundreds {
+	clear: both;
+}
+.img1 {
+	background-image: url(../images/1.png);
+}
+.img2 {
+	background-image: url(../images/2.png);
+}
+.img3 {
+	background-image: url(../images/3.png);
+}
+.img4 {
+	background-image: url(../images/4.png);
+}
+.img5 {
+	background-image: url(../images/5.png);
+}
+.img6 {
+	background-image: url(../images/6.png);
+}
+.img7 {
+	background-image: url(../images/7.png);
+}
+.img8 {
+	background-image: url(../images/8.png);
+}
+.img9 {
+	background-image: url(../images/9.png);
+}
+.img0, .img00 {
+	background-image: url(../images/0.png);
+}
+#record-text {
+	width: 190px;
+	margin: 70px 0 0 80px;
+	text-align: left;
+	color: #fff;
+}
+#record-text p {
+	padding: 20px 0 0 0;
+}
+
+.content {
+	width: 260px;
+	padding: 30px 30px 20px 30px;
+}
+
+.content p {
+	font-size: 12px;
+	max-width: 280px;
+	padding: 0 0 20px 0;
+}
+.content a {
+	color: #fff;
+}
+#logo {
+	position: absolute;
+	top: 340px;
+	left: 127px;
+}
+.blogo {
+	margin: 0px 0 0 0px;
+}
+#jqt #home{
+	background-color: #000;
+	background-repeat: no-repeat;
+	background-image: none;
+}
+#jqt #instructions, #jqt #about, #jqt #settings {
+	background: #000 url(../images/background2.jpg) no-repeat;
+	background-size:320px 480px;
+}
+#jqt #records {
+	background: #000 url(../images/background2.jpg?) no-repeat;
+	background-size:320px 480px;
+}
+.navigation {
+	width: 320px;
+	margin: 46px 0 20px;
+	text-align: center;
+	font: 18px/20px Georgia, "Times New Roman", Times, serif;
+		font-family: Roskell, Roskell;
+}
+.navigation a {
+	color: #fff;
+	text-decoration: none;
+	margin: 5px;
+}
+
+img.size320 {
+	width: 320px;
+}
+
+#records, #instructions, #settings, #about {
+	display: none;
+	position: absolute;
+	width: 320px;
+	height: 480px;
+}
+
+
+img.title {
+	width: 152px;
+}
+
+a.underline {
+	text-decoration: underline;
+}
+h1 {
+	font-size: 20px;
+	font-family: Roskell, Roskell;
+	font-weight: normal;
+	color: #fff;
+}
+
+#guage {
+	margin: 0 auto;
+	float: none;
+}
+
+#guage, #records, #instructions, #about, #settings {
+	position: absolute;
+	top: 50%;
+	margin-top: -240px;
+	margin-left: -160px;
+	left: 50%;	
+}
+
+
+
+/* @group iPad */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+body #jqt {
+	width: 768px;
+	height: 1024px;
+	overflow: hidden;
+	margin: 0 auto;
+}
+#jqt #ghostimage {
+	margin: 30px 0 0 8px;
+}
+#jqt a.recordbutton img {
+	/*background-color: rgba(255,153,0,0.26);*/
+	width: 200px;
+	height: 60px;
+	margin-top: 50px;
+}
+h1 {
+	font-size: 30px;
+}
+img.size320 {
+	width: 640px;
+}
+img.title {
+	width: auto;
+}
+
+#jqt {
+	font-size: 20px;
+	width: 704px;
+	height: 960px;
+	/*margin: 32px 64px;*/
+}
+p.navigation {
+	font-size: 30px;
+	margin: 120px auto 0 auto;
+	width: 550px;
+}
+#record-text  {
+	padding: 30px 0 0 0;
+}
+.content {
+	width: 440px;
+	padding: 100px;
+}
+.content p {
+	font-size: 17px;
+	max-width: 400px;
+}
+#guage {
+	width: 640px;
+	height: 960px;
+	overflow: hidden;
+	float: left;
+	background-color: #cccccc;
+	margin: 32px 0 0 64px;
+}
+#homebutton img {
+	margin: 0 0 15px 49px;
+	width: 80px;
+	height: 80px;
+}
+#buttons {
+	width: 500px;
+	top: 576px;
+	left: 230px;
+}
+#needleIMG {
+	margin: 190px 0 0 0;
+	position: absolute;
+	top: 20px;
+	left: 288px;
+}
+#needleIMG img {
+	width: 62px;
+	height: 750px;
+}
+#home, #records, #instructions, #settings, #about {
+	width: 640px;
+	height: 960px;
+}
+#jqt #records, #jqt #instructions, #jqt #about, #jqt #settings {
+	background: #000 url(../images/background2.jpg) no-repeat;
+	background-size:640px 960px;
+	/*margin: 32px 0 0 64px;*/
+}
+#hundreds, #tens, #ones {
+	margin: 107px 0 0 14px;
+	padding: 0 0 0 2px;
+	width: 40px;
+	height: 40px;
+	background-size: 40px 40px;
+}
+#logo {
+	position: absolute;
+	top: 680px;
+	left: 260px;
+}
+
+#guage, #records, #instructions, #about, #settings {
+	position: absolute;
+	top: 50%;	
+	left: 50%;	
+	margin-top: -480px;
+	margin-left: -320px;
+}
+
+
+
+}
+/* @end iPad Styles*/

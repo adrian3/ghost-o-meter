@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ghost-O-Meter</title>
+  <style type="text/css" media="screen">@import "styles/styles.css";</style>
+  <style type="text/css" media="screen">@import "styles/jqtouch.css";</style>
+
+</head>
+<body onload="needleToZero();" ontouchmove="BlockMove(event);">
+  <div id="jqt">
+
+    <div id="home" class="current">
+        <div id="guage">
+          <img class="size320" src="images/guage-background.png">
+          <div id="needleIMG">
+            <img src="images/needle2.png" alt="Needle">
+          </div>
+          <div id="mask"><img class="size320" src="images/guage-mask.png"></div>
+          <div id="mask-highlight"><img class="size320" src="images/guage-mask-highlight.png"></div>
+          <div id="light1"><img class="size320" src="images/light-on1.png"></div>
+          <div id="light2"><img class="size320" src="images/light-on2.png"></div>
+          <div id="light3"><img class="size320" src="images/light-on3.png"></div>
+          <!-- <div id="light4"><img src="images/light-on4.png" width="320" height="480" alt="highlight"></div> -->
+          <div id="buttons">
+            <div id="homebutton">
+             <div id="homeb1"><a href="#records" onclick="updatePanel();"><img src="images/home-button.png"></a></div>
+             <div id="homeb2"><a href="#records" onclick="updatePanel();"><img src="images/home-button2.png"></a></div>
+           </div>
+           <div id="hundreds" class="img00">
+           </div>
+           <div id="tens" class="img00">
+           </div>
+           <div id="ones" class="img00">
+           </div>
+
+
+       </div>
+     </div>
+
+<!-- <div id="debugpannel" style="display:block;">
+  <a href="#" onClick="$('#light').fadeIn('1000');">Light on</a><br />
+
+  <a href="#" onClick="$('#light').fadeOut('1000'),$('#highlight').fadeOut('1000');">Light off</a><br />
+  <a href="#" onclick="updateCounters(3);">3</a><br />
+  <a href="#"onclick="needleMoved(9,9);">test</a>
+  <a href="#" onclick="updateCounters(20);">20</a><br />
+  <a href="#" onclick="updateCounters(321);">321</a><br />
+  <a href="#" onclick="updateCounters(456);">456</a><br />
+  <a href="#" onclick="updateCounters(1,3);">1 found, 3 generated</a><br />
+
+  Heading: <sp  id="compassheading"></span><br /><br />
+    
+    X: <span id="currentx"></span><br />
+    Y: <span id="currenty"></span><br />
+    Z: <span id="currentz"></span><br />
+    <br />
+    
+    
+    Average Pitch (500ms): <span id="averagepitch"></span><br />
+    Average Roll (500ms): <span id="averageroll"></span><br /><br />
+    
+    Ghost Heading: <span id="ghostheading"></span><br />
+    Ghost Pitch: <span id="ghostpitch"></span><br /><br />
+    
+    Needle %: <span id="needle"></span><br />
+    Heading Points: <span id="headingpoints"></span><br />
+    Angle Points: <span id="anglepoints"></span><br />
+    Heading Diff: <span id="headingdiff"></span><br />
+    Angle Diff: <span id="anglediff"></span><br /><br />
+    
+    Detection MS: <span id="detections"></span><br /><br />
+    Ghost Detected: <span id="ghostexhists"></span><br /><br />
+
+    <hr>
+    
+    Heading: <input type="text" name="heading" id="heading" value="0"><br><br>
+    X: <input type="text" name="x" id="x"  value="0"><br>
+    Y: <input type="text" name="y" id="y"  value="0"><br>
+    Z: <input type="text" name="x" id="z"  value="0">
+  </div> 
+
+</div> -->
+
+<!-- Records -->
+<div id="records">
+
+    <p class="navigation">
+      <a class="meter" href="#home">Exit</a>
+      <a class="instructions" href="#instructions">Instructions</a>
+      <a class="settings" href="#settings">Settings</a>
+      <a class="about" href="#about">About</a>
+    </p>
+    <div id="record-text">
+     <h1>Your Records</h1>
+     <p><span class="ghostsdetected">0</span>
+      Ghosts Detected</p>
+      <p><span class="ghostsfound">0</span>
+        Ghosts Found</p>
+        <p><span class="ghostsescaped">0</span>
+          Ghosts Escaped</p>
+        </div>
+    </div>
+
+    <!-- Instructions -->
+    <div id="instructions">
+
+        <p class="navigation">
+          <a class="meter" href="#home">Exit</a>
+          <a class="instructions" href="#instructions">Instructions</a>
+          <a class="settings" href="#settings">Settings</a>
+          <a class="about" href="#about">About</a>
+        </p>
+
+        <div class="content">
+         <h1>Instructions</h1>
+
+         <p>
+          1. To track down a ghost, slowly move the <br />Ghost-O-Meter around the room. <br /><br />
+
+          2. When you notice a spike of the needle, stop and slowly move in the direction of the activity. <br /><br />
+
+          3. Now that you are locked onto the ghost, raise and lower the Ghost-O-Meter until the needle shows high readings. <br /><br />
+
+          4. Be quick, because ghosts get frightened quickly. If you don't find the ghost in time, it might escape.<br /><br />
+
+          5. When you find a ghost, the counter will keep track of your success. How many ghosts can you find?
+        </p>
+      </div>
+  </div>
+
+  <!-- Settings -->
+  <div id="settings">
+
+      <p class="navigation">
+        <a class="meter" href="#home">Exit</a>
+        <a class="instructions" href="#instructions">Instructions</a>
+        <a class="settings" href="#settings">Settings</a>
+        <a class="about" href="#about">About</a>
+      </p>
+
+      <div class="content">
+       <h1>Settings</h1>
+       <p><a href="#" onclick="window.location.reload();">Reload Ghost-O-Meter</a><br /><br />
+        <a href="#" onclick="localStorage.clear(),updateCounters(0,0),navigator.notification.alert('App reset successfully.',alertDismissed,'Success!','OK');">Reset app and erase records</a>
+      </p>
+    </div>
+
+</div>
+
+<!-- About -->
+<div id="about">
+
+    <p class="navigation">
+      <a class="meter" href="#home">Exit</a>
+      <a class="instructions" href="#instructions">Instructions</a>
+      <a class="settings" href="#settings">Settings</a>
+      <a class="about" href="#about">About</a>
+    </p>
+
+    <div class="content">
+     <h1>About</h1>
+     <p>The Ghost-O-Meter is a device that you can use to detect ghosts. When the Ghost-O-Meter detects traces of paranormal activity, the needle will spike up. The closer you are to a ghost, the brighter the light will get. Once you find a ghost, the counter on the screen will record your achievement.</p>
+
+     <p>The Ghost-O-Meter was created by:<br /> <a href="http://adrian3.com" target="_blank">Adrian Hanft</a> &amp; Kile Lindgren.</p>
+   </div>
+</div>
+
+<script src="cordova.js" type="text/javascript"></script>
+<script src="js/ghost.js" type="text/javascript" charset="utf-8" ></script>
+<script src="js/audio.js" type="text/javascript" charset="utf-8" ></script>
+<script src="js/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8" ></script>
+<script src="js/fastclick.js" type="text/javascript" charset="utf-8"></script>
+
+<script>// temp fix for iOS8 beta, add it after the reference to cordova.js
+    if (navigator.userAgent === undefined) {navigator.__defineGetter__('userAgent', function() {return("Mozilla/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit");});}
+    </script>
+<script type="text/javascript" charset="utf-8">
+$('#homebutton').click(function() {
+  $('#records').fadeIn('fast');
+  $('.records').addClass('underline');
+});
+$('.meter').click(function() {
+  $('.records').removeClass('underline');
+  $('.instructions').removeClass('underline');
+  $('.about').removeClass('underline');
+  $('.settings').removeClass('underline');
+  $('#records').fadeOut('slow');
+  $('#instructions').fadeOut('slow');
+  $('#about').fadeOut('slow');
+  $('#settings').fadeOut('slow');
+});
+$('.records').click(function() {
+  $('.records').addClass('underline');
+  $('.instructions').removeClass('underline');
+  $('.meter').removeClass('underline');
+  $('.about').removeClass('underline');
+  $('.settings').removeClass('underline');
+  $('#records').fadeIn('fast');
+  $('#instructions').fadeOut('slow');
+  $('#about').fadeOut('slow');
+  $('#settings').fadeOut('slow');
+});
+$('.settings').click(function() {
+  $('.settings').addClass('underline');
+  $('.records').removeClass('underline');
+  $('.meter').removeClass('underline');
+  $('.about').removeClass('underline');
+  $('.instructions').removeClass('underline');
+  $('#records').fadeOut('slow');
+  $('#instructions').fadeOut('slow');
+  $('#about').fadeOut('slow');
+  $('#settings').fadeIn('fast');
+});
+$('.instructions').click(function() {
+  $('.instructions').addClass('underline');
+  $('.records').removeClass('underline');
+  $('.meter').removeClass('underline');
+  $('.about').removeClass('underline');
+  $('.settings').removeClass('underline');
+  $('#records').fadeOut('slow');
+  $('#instructions').fadeIn('fast');
+  $('#about').fadeOut('slow');
+  $('#settings').fadeOut('slow');
+});
+$('.about').click(function() {
+  $('.about').addClass('underline');
+  $('.records').removeClass('underline');
+  $('.meter').removeClass('underline');
+  $('.instructions').removeClass('underline'); 
+  $('.settings').removeClass('underline');
+  $('#records').fadeOut('slow');
+  $('#instructions').fadeOut('slow');
+  $('#about').fadeIn('fast');
+  $('#settings').fadeOut('slow');
+});
+
+  button2 = document.getElementById("homeb2");
+  button2.style.opacity = 0;
+  button2.style.webkitTransition = 'opacity 1000ms linear';
+</script>
+  <script src="js/app.js" type="text/javascript" charset="utf-8"></script>
+</div> <!-- end jqt -->
+</body>
+</html>
