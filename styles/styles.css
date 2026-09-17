@@ -1,0 +1,237 @@
+/* Ghost-O-Meter — PWA stylesheet
+   The whole app is laid out on a fixed 320x480 "stage" (the original iPhone
+   design size, drawn with 2x artwork). JS scales the stage to fit whatever
+   screen it is on, so the artwork never distorts. */
+
+@font-face {
+  font-family: 'Roskell';
+  src: url("../fonts/Roskell.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #000;
+  overflow: hidden;
+  touch-action: none;
+  overscroll-behavior: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  position: fixed;
+  inset: 0;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+#stage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 320px;
+  height: 480px;
+  margin: -240px 0 0 -160px;
+  transform-origin: 50% 50%;
+  overflow: hidden;
+  background: #000;
+}
+
+p {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: #fff;
+  line-height: 16px;
+}
+
+/* Panels ------------------------------------------------------------- */
+
+.panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 320px;
+  height: 480px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 600ms ease, visibility 0s linear 600ms;
+}
+.panel.current {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 200ms ease, visibility 0s;
+}
+
+#home {
+  background-color: #000;
+}
+#records, #instructions, #settings, #about {
+  background: #000 url(../images/background2.jpg) no-repeat;
+  background-size: 320px 480px;
+}
+
+/* Gauge -------------------------------------------------------------- */
+
+#guage {
+  position: relative;
+  width: 320px;
+  height: 480px;
+  overflow: hidden;
+  background-color: #000;
+}
+
+#needleIMG {
+  position: absolute;
+  top: 20px;
+  left: 144px;
+  margin: 95px 0 0 0;
+  transform: rotate(-37deg);
+  transition: transform 500ms ease;
+  will-change: transform;
+}
+#needleIMG img {
+  width: 31px;
+  height: 375px;
+  display: block;
+}
+
+#mask, #mask-highlight, #light1, #light2, #light3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#mask-highlight, #light1, #light2, #light3 {
+  opacity: 0;
+  transition: opacity 500ms linear;
+}
+
+img.size320 {
+  width: 320px;
+  display: block;
+}
+
+/* Buttons and counter ------------------------------------------------ */
+
+#buttons {
+  position: absolute;
+  width: 250px;
+  top: 293px;
+  left: 115px;
+}
+#homebutton {
+  float: left;
+  margin: -10px 0 0 0;
+}
+#homebutton img {
+  width: 40px;
+  margin: 0 0 16px 25px;
+}
+#homeb1, #homeb2 {
+  position: absolute;
+}
+#homeb2 {
+  opacity: 0;
+  transition: opacity 1000ms linear;
+}
+
+#hundreds, #tens, #ones {
+  margin: 49px 0 0 7px;
+  padding: 0 1px 0 0;
+  float: left;
+  width: 20px;
+  height: 20px;
+  background-size: 20px 20px;
+}
+#hundreds { clear: both; }
+
+.img1 { background-image: url(../images/1.png); }
+.img2 { background-image: url(../images/2.png); }
+.img3 { background-image: url(../images/3.png); }
+.img4 { background-image: url(../images/4.png); }
+.img5 { background-image: url(../images/5.png); }
+.img6 { background-image: url(../images/6.png); }
+.img7 { background-image: url(../images/7.png); }
+.img8 { background-image: url(../images/8.png); }
+.img9 { background-image: url(../images/9.png); }
+.img0, .img00 { background-image: url(../images/0.png); }
+
+/* Power-on hint (shown until the first tap unlocks sensors + audio) --- */
+
+#poweron {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 26px;
+  text-align: center;
+  pointer-events: none;
+  font-family: Roskell, Georgia, serif;
+  font-size: 15px;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.8);
+  text-shadow: 0 0 8px rgba(255, 200, 120, 0.8);
+  animation: poweron-pulse 1.6s ease-in-out infinite;
+}
+#poweron[hidden] { display: none; }
+@keyframes poweron-pulse {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 1; }
+}
+
+/* Text panels -------------------------------------------------------- */
+
+#record-text {
+  width: 190px;
+  margin: 70px 0 0 80px;
+  text-align: left;
+  color: #fff;
+}
+#record-text p {
+  padding: 20px 0 0 0;
+}
+
+.content {
+  width: 260px;
+  padding: 30px 30px 20px 30px;
+}
+.content p {
+  font-size: 12px;
+  max-width: 280px;
+  padding: 0 0 20px 0;
+}
+.content a {
+  color: #fff;
+}
+.status {
+  display: block;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.6);
+  padding-top: 8px;
+}
+.status:empty { display: none; }
+
+.navigation {
+  width: 320px;
+  margin: 46px 0 20px;
+  text-align: center;
+  font: 18px/20px Roskell, Georgia, "Times New Roman", Times, serif;
+}
+.navigation a {
+  color: #fff;
+  text-decoration: none;
+  margin: 5px;
+}
+a.underline {
+  text-decoration: underline;
+}
+
+h1 {
+  font-size: 20px;
+  font-family: Roskell, Georgia, serif;
+  font-weight: normal;
+  color: #fff;
+}

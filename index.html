@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Ghost-O-Meter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="description" content="A device that you can use to detect ghosts. Move it slowly around the room and watch the needle.">
+  <meta name="theme-color" content="#000000">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Ghost-O-Meter">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+  <div id="stage">
+
+    <!-- Meter -->
+    <div id="home" class="panel current">
+      <div id="guage">
+        <img class="size320" src="images/guage-background.png" alt="">
+        <div id="needleIMG">
+          <img src="images/needle2.png" alt="Needle">
+        </div>
+        <div id="mask"><img class="size320" src="images/guage-mask.png" alt=""></div>
+        <div id="mask-highlight"><img class="size320" src="images/guage-mask-highlight.png" alt=""></div>
+        <div id="light1"><img class="size320" src="images/light-on1.png" alt=""></div>
+        <div id="light2"><img class="size320" src="images/light-on2.png" alt=""></div>
+        <div id="light3"><img class="size320" src="images/light-on3.png" alt=""></div>
+        <div id="buttons">
+          <div id="homebutton">
+            <div id="homeb1"><a href="#records" data-panel="records" aria-label="Your records"><img src="images/home-button.png" alt=""></a></div>
+            <div id="homeb2"><a href="#records" data-panel="records" aria-label="Your records"><img src="images/home-button2.png" alt=""></a></div>
+          </div>
+          <div id="hundreds" class="img00"></div>
+          <div id="tens" class="img00"></div>
+          <div id="ones" class="img00"></div>
+        </div>
+      </div>
+      <div id="poweron" hidden><span>Tap to power on</span></div>
+    </div>
+
+    <!-- Records -->
+    <div id="records" class="panel">
+      <p class="navigation">
+        <a class="meter" href="#home" data-panel="home">Exit</a>
+        <a class="instructions" href="#instructions" data-panel="instructions">Instructions</a>
+        <a class="settings" href="#settings" data-panel="settings">Settings</a>
+        <a class="about" href="#about" data-panel="about">About</a>
+      </p>
+      <div id="record-text">
+        <h1>Your Records</h1>
+        <p><span class="ghostsdetected">0</span> Ghosts Detected</p>
+        <p><span class="ghostsfound">0</span> Ghosts Found</p>
+        <p><span class="ghostsescaped">0</span> Ghosts Escaped</p>
+      </div>
+    </div>
+
+    <!-- Instructions -->
+    <div id="instructions" class="panel">
+      <p class="navigation">
+        <a class="meter" href="#home" data-panel="home">Exit</a>
+        <a class="instructions" href="#instructions" data-panel="instructions">Instructions</a>
+        <a class="settings" href="#settings" data-panel="settings">Settings</a>
+        <a class="about" href="#about" data-panel="about">About</a>
+      </p>
+      <div class="content">
+        <h1>Instructions</h1>
+        <p>
+          1. To track down a ghost, slowly move the <br>Ghost-O-Meter around the room. <br><br>
+          2. When you notice a spike of the needle, stop and slowly move in the direction of the activity. <br><br>
+          3. Now that you are locked onto the ghost, raise and lower the Ghost-O-Meter until the needle shows high readings. <br><br>
+          4. Be quick, because ghosts get frightened quickly. If you don't find the ghost in time, it might escape.<br><br>
+          5. When you find a ghost, the counter will keep track of your success. How many ghosts can you find?
+        </p>
+      </div>
+    </div>
+
+    <!-- Settings -->
+    <div id="settings" class="panel">
+      <p class="navigation">
+        <a class="meter" href="#home" data-panel="home">Exit</a>
+        <a class="instructions" href="#instructions" data-panel="instructions">Instructions</a>
+        <a class="settings" href="#settings" data-panel="settings">Settings</a>
+        <a class="about" href="#about" data-panel="about">About</a>
+      </p>
+      <div class="content">
+        <h1>Settings</h1>
+        <p>
+          <a href="#" id="reload-link">Reload Ghost-O-Meter</a><br><br>
+          <a href="#" id="reset-link">Reset app and erase records</a>
+          <span id="reset-status" class="status"></span>
+        </p>
+        <p id="sensor-status" class="status"></p>
+      </div>
+    </div>
+
+    <!-- About -->
+    <div id="about" class="panel">
+      <p class="navigation">
+        <a class="meter" href="#home" data-panel="home">Exit</a>
+        <a class="instructions" href="#instructions" data-panel="instructions">Instructions</a>
+        <a class="settings" href="#settings" data-panel="settings">Settings</a>
+        <a class="about" href="#about" data-panel="about">About</a>
+      </p>
+      <div class="content">
+        <h1>About</h1>
+        <p>The Ghost-O-Meter is a device that you can use to detect ghosts. When the Ghost-O-Meter detects traces of paranormal activity, the needle will spike up. The closer you are to a ghost, the brighter the light will get. Once you find a ghost, the counter on the screen will record your achievement.</p>
+        <p>The Ghost-O-Meter was created by:<br> <a href="http://adrian3.com" target="_blank" rel="noopener">Adrian Hanft</a>.</p>
+      </div>
+    </div>
+
+  </div><!-- end stage -->
+
+  <script src="js/audio.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/ghost.js"></script>
+  <script src="js/sensors.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('sw.js').catch(function (err) {
+          console.log('Service worker registration failed:', err);
+        });
+      });
+    }
+  </script>
+</body>
+</html>
