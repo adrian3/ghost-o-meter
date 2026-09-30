@@ -4,7 +4,7 @@
 // a PWA. Bump CACHE_VERSION whenever any file changes; the old cache is
 // removed on activate and the new files are fetched.
 
-var CACHE_VERSION = 'ghost-o-meter-v2';
+var CACHE_VERSION = 'ghost-o-meter-v3';
 
 var PRECACHE = [
   './',
@@ -42,7 +42,7 @@ var PRECACHE = [
   './icons/icon-192.png',
   './icons/icon-512.png',
   './icons/icon-maskable-512.png',
-  './icons/apple-touch-icon.png'
+  './apple-touch-icon.png'
 ];
 
 self.addEventListener('install', function (event) {
